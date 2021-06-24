@@ -8,6 +8,7 @@ import pymysql
 import numpy
 root=Tk()
 from Content_detection import start_video
+from recognise_human_activity import recognize
 
 
 def spliting(filename):
@@ -76,7 +77,7 @@ class Main_App:
         video_box = Frame(root, width=400, highlightbackground='white', height='300').place(x='50', y='100')
         btn_next = Button(root, text='>', width=4, bg='#078fc9', fg='white', command=self.next).place(x=250, y=450)
         btn_back = Button(root, text='<', width=4, bg='#078fc9', fg='white', command=self.back).place(x=210, y=450)
-#to search the user required category
+    #to search the user required category
     def search(self):
         messagebox.showinfo("search", "we are searching here", parent=self.root)
 
@@ -92,6 +93,7 @@ class Main_App:
                 filename = filedialog.askopenfilename(initialdir="/", title="select a file",
                                                       filetype=(("mp4", "*.mp4"), ("All Files", "*.*")))
             else:
+                recognize(filename)
                 objList=start_video(filename)
                 objName=str(objList)
                 frameno=spliting(filename)
