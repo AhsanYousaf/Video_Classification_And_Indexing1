@@ -6,6 +6,7 @@ import cv2
 import moviepy.editor
 import pymysql
 import numpy
+import tkvideo as tkv
 root=Tk()
 from Content_detection import start_video
 from recognise_human_activity import recognize
@@ -75,6 +76,10 @@ class Main_App:
         btn_upload =Button(root, text='upload', width=10, bg='#078fc9',font=('goudy old style', 10,'bold'), fg='white', command=self.upload).place(x=200, y=12)
         btn_logout =Button(root, text='Logout', width=10, bg='#078fc9',font=('goudy old style', 10,'bold'), fg='white', command=self.logout).place(x=5, y=12)
         video_box = Frame(root, width=400, highlightbackground='white', height='300').place(x='50', y='100')
+        my_label = Label(root)
+        my_label.place(x='50', y='100')
+        player = tkv.tkvideo("test/example1.mp4",my_label, loop=1 , size=(400,300))
+        player.play()
         btn_next = Button(root, text='>', width=4, bg='#078fc9', fg='white', command=self.next).place(x=250, y=450)
         btn_back = Button(root, text='<', width=4, bg='#078fc9', fg='white', command=self.back).place(x=210, y=450)
     #to search the user required category
